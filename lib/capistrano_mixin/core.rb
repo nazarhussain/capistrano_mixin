@@ -7,7 +7,7 @@ if  Capistrano::Configuration.instance
 		set :user, "deploy"
 		set :use_sudo, true
 		set :shell, '/bin/bash --login'
-		set :deploy_to, "/home/deploy/apps/#{fetch(:application)}	"
+		set :deploy_to, "/home/deploy/apps/#{fetch(:application)}"
 		set :deploy_via, :remote_cache
 
 		set :bluepill_bin, 'bluepill'
