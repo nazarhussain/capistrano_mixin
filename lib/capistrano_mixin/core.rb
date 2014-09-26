@@ -18,6 +18,15 @@ if  Capistrano::Configuration.instance
 
 		after "deploy:finalize_update", "db:symlink"
 		after "deploy:finalize_update", "sockets:symlink"
+		
+		after "deploy:finalize_update", "uploads:symlink"
+		
+	    namespace :uploads do
+	      task :symlink do
+	        run "rm -rf #{release_path}/public/uploads"
+	        run "ln -nfs #{shared_path}/uploads #{release_path}/public/uploads"
+	      end
+	    end
 
 		namespace :db do
 			task :symlink do
